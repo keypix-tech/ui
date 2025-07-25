@@ -20,16 +20,15 @@ npm install keypix-ui
 
 This UI kit requires Tailwind CSS to be installed and configured in your project.
 
-### 1. Install Tailwind CSS
+### 1. Install Tailwind CSS v4
 
 ```bash
-npm install -D tailwindcss postcss autoprefixer
-npx tailwindcss init -p
+npm install -D tailwindcss
 ```
 
 ### 2. Configure Tailwind CSS
 
-In your `tailwind.config.js`:
+Create `tailwind.config.js`:
 
 ```js
 /** @type {import('tailwindcss').Config} */
@@ -50,10 +49,11 @@ export default {
 In your main CSS file (e.g., `src/index.css`):
 
 ```css
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/preflight";
+@import "tailwindcss/utilities";
 ```
+
+**Note**: Tailwind CSS v4 uses `@import` instead of `@tailwind` directives.
 
 ## 📖 Usage
 
@@ -90,7 +90,7 @@ A versatile button component with multiple variants and sizes.
 
 - React 18+
 - TypeScript
-- TailwindCSS
+- TailwindCSS v4
 - class-variance-authority
 - Vite
 
