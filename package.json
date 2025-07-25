@@ -1,7 +1,21 @@
 {
     "name": "keypix-ui",
     "private": false,
-    "version": "0.0.4",
+    "version": "0.0.5",
+    "main": "dist/Button.cjs",
+    "module": "dist/Button.js",
+    "types": "dist/Button.d.ts",
+    "exports": {
+        ".": {
+            "import": "./dist/Button.js",
+            "require": "./dist/Button.cjs",
+            "types": "./dist/Button.d.ts"
+        }
+    },
+    "files": [
+        "dist",
+        "README.md"
+    ],
     "type": "module",
     "scripts": {
         "dev": "vite",
