@@ -1,7 +1,7 @@
 {
     "name": "keypix-ui",
     "private": false,
-    "version": "0.1.0",
+    "version": "0.2.0",
     "main": "dist/Button.cjs",
     "module": "dist/Button.js",
     "types": "dist/Button.d.ts",
@@ -14,12 +14,13 @@
     },
     "files": [
         "dist",
+        "src/styles.css",
         "README.md"
     ],
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "tsup src/components/ui --dts --format esm,cjs --out-dir dist",
+        "build": "tsup src/index.ts --dts --format esm,cjs --out-dir dist",
         "lint": "eslint .",
         "preview": "vite preview"
     },

@@ -1,0 +1,41 @@
+/* keypix-ui Button Styles */
+
+.keypix-button {
+    @apply inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible: outline-none focus-visible: ring-2 focus-visible: ring-blue-500 focus-visible: ring-offset-2 disabled: opacity-50 disabled: pointer-events-none;
+}
+
+.keypix-button--default {
+    @apply bg-blue-600 text-white hover: bg-blue-700 shadow-sm;
+}
+
+.keypix-button--destructive {
+    @apply bg-red-600 text-white hover: bg-red-700 shadow-sm;
+}
+
+.keypix-button--outline {
+    @apply border border-gray-300 bg-white text-gray-700 hover: bg-gray-50 hover: border-gray-400;
+}
+
+.keypix-button--ghost {
+    @apply text-gray-700 hover: bg-gray-100 hover: text-gray-900;
+}
+
+.keypix-button--link {
+    @apply text-blue-600 underline-offset-4 hover: underline bg-transparent;
+}
+
+.keypix-button--sm {
+    @apply h-8 px-3 text-xs;
+}
+
+.keypix-button--md {
+    @apply h-10 px-4 text-sm;
+}
+
+.keypix-button--lg {
+    @apply h-12 px-6 text-base;
+}
+
+.keypix-button--icon {
+    @apply h-10 w-10;
+}
