@@ -1,7 +1,7 @@
 {
     "name": "keypix-ui",
     "private": false,
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "A premium React component library built with TypeScript, Tailwind CSS, and Atomic Design principles. The most comprehensive and beautiful UI library available.",
     "author": {
         "name": "Keypix Technologies",
@@ -25,7 +25,6 @@
     },
     "files": [
         "dist",
-        "src/styles/theme.css",
         "README.md",
         "LICENSE"
     ],

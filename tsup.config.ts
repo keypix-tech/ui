@@ -1,4 +1,5 @@
 import { defineConfig } from 'tsup'
+import { copyFile } from 'fs/promises'
 
 export default defineConfig({
   entry: ['src/index.ts'],
@@ -11,5 +12,13 @@ export default defineConfig({
   treeshake: true,
   minify: false,
   outDir: 'dist',
-  onSuccess: 'echo "Build completed successfully!"',
+  onSuccess: async () => {
+    // Copy CSS files to dist
+    try {
+      await copyFile('src/styles/theme.css', 'dist/theme.css')
+      console.log('✅ CSS files copied to dist!')
+    } catch (error) {
+      console.error('❌ Failed to copy CSS files:', error)
+    }
+  },
 }) 
