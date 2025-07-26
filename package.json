@@ -1,44 +1,79 @@
 {
     "name": "keypix-ui",
     "private": false,
-    "version": "0.2.0",
-    "main": "dist/Button.cjs",
-    "module": "dist/Button.js",
-    "types": "dist/Button.d.ts",
+    "version": "1.0.0",
+    "description": "A premium React component library built with TypeScript, Tailwind CSS, and Atomic Design principles. The most comprehensive and beautiful UI library available.",
+    "author": {
+        "name": "Keypix Technologies",
+        "email": "keypixteam@gmail.com",
+        "url": "https://ui.keypix.uz"
+    },
+    "license": "MIT",
+    "funding": {
+        "type": "github",
+        "url": "https://github.com/sponsors/keypix-tech"
+    },
+    "main": "./dist/index.cjs",
+    "module": "./dist/index.js",
+    "types": "./dist/index.d.ts",
     "exports": {
         ".": {
-            "import": "./dist/Button.js",
-            "require": "./dist/Button.cjs",
-            "types": "./dist/Button.d.ts"
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.js",
+            "require": "./dist/index.cjs"
         }
     },
     "files": [
         "dist",
-        "src/styles.css",
-        "README.md"
+        "src/styles/theme.css",
+        "README.md",
+        "LICENSE"
     ],
+    "sideEffects": false,
+    "unpkg": "./dist/index.js",
+    "jsdelivr": "./dist/index.js",
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "tsup src/index.ts --dts --format esm,cjs --out-dir dist",
-        "lint": "eslint .",
-        "preview": "vite preview"
+        "build": "tsup",
+        "build:clean": "rm -rf dist && npm run build",
+        "lint": "eslint . --ext .ts,.tsx",
+        "lint:fix": "eslint . --ext .ts,.tsx --fix",
+        "preview": "vite preview",
+        "type-check": "tsc --noEmit",
+        "prepare": "npm run build",
+        "prepublishOnly": "npm run lint && npm run type-check",
+        "docs:dev": "vite --config docs/vite.config.ts",
+        "docs:build": "vite build --config docs/vite.config.ts",
+        "docs:preview": "vite preview --config docs/vite.config.ts"
     },
     "peerDependencies": {
         "react": ">=18.0.0",
         "react-dom": ">=18.0.0",
         "tailwindcss": ">=4.0.0"
     },
+    "peerDependenciesMeta": {
+        "tailwindcss": {
+            "optional": true
+        }
+    },
+    "engines": {
+        "node": ">=18.0.0",
+        "npm": ">=8.0.0"
+    },
+    "browserslist": [
+        "> 1%",
+        "last 2 versions",
+        "not dead",
+        "not ie 11"
+    ],
     "dependencies": {
-        "@tailwindcss/vite": "^4.1.11",
         "clsx": "^2.1.1",
-        "path": "^0.12.7",
-        "react": "^19.1.0",
-        "react-dom": "^19.1.0",
         "tailwind-merge": "^3.3.1"
     },
     "devDependencies": {
         "@eslint/js": "^9.30.1",
+        "@tailwindcss/vite": "^4.1.11",
         "@types/node": "^24.1.0",
         "@types/react": "^19.1.8",
         "@types/react-dom": "^19.1.6",
@@ -55,5 +90,51 @@
         "typescript": "~5.8.3",
         "typescript-eslint": "^8.35.1",
         "vite": "^7.0.4"
+    },
+    "keywords": [
+        "react",
+        "typescript",
+        "ui",
+        "components",
+        "design-system",
+        "tailwindcss",
+        "atomic-design",
+        "dark-mode",
+        "accessibility",
+        "component-library",
+        "ui-kit",
+        "react-components",
+        "typescript-components",
+        "modern-ui",
+        "premium-ui",
+        "enterprise-ui",
+        "responsive-design",
+        "mobile-first",
+        "css-in-js",
+        "utility-first"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/keypix-tech/ui.git"
+    },
+    "bugs": {
+        "url": "https://github.com/keypix-tech/ui/issues"
+    },
+    "homepage": "https://ui.keypix.uz",
+    "docs": "https://ui.keypix.uz/docs",
+    "changelog": "https://github.com/keypix-tech/ui/blob/main/CHANGELOG.md",
+    "contributors": [{
+        "name": "KeyPix Team",
+        "email": "keypixteam@gmail.com",
+        "url": "https://keypix.uz"
+    }],
+    "maintainers": [{
+        "name": "KeyPix Team",
+        "email": "keypixteam@gmail.com",
+        "url": "https://ui.keypix.uz"
+    }],
+    "publishConfig": {
+        "access": "public",
+        "registry": "https://registry.npmjs.org/"
     }
 }

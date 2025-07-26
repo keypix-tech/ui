@@ -1,193 +1,328 @@
-# keypix-ui
+# KeyPix UI
 
-A modern, scalable UI kit built with **Atomic Design Pattern** for React + TypeScript applications. Clean, composable, and highly customizable components.
+A premium React component library built with TypeScript, Tailwind CSS, and Atomic Design principles. Designed to be the most comprehensive and beautiful UI library available.
 
 ## ✨ Features
 
-- **Atomic Design**: Organized by Atoms, Molecules, Organisms, Templates, and Pages
-- **TypeScript First**: Full TypeScript support with proper type definitions
-- **TailwindCSS v4**: Built with the latest Tailwind CSS for easy styling
-- **Composable**: Mix and match components to build complex interfaces
-- **Modern**: Built with React 18+ and modern tooling
-- **Scalable**: Perfect for large applications and design systems
+- 🎨 **Atomic Design Pattern** - Organized components from atoms to organisms
+- 🌙 **Dark Mode Support** - Built-in theme switching with system preference detection
+- 📦 **TypeScript First** - Full type safety and IntelliSense support
+- 🎯 **Tailwind CSS v4** - Latest utility-first styling with custom design system
+- ⚡ **Zero Runtime** - No additional JavaScript bundle size
+- 🔧 **Highly Customizable** - Easy to extend and customize
+- 📱 **Responsive** - Mobile-first design approach
+- 🎭 **Modern Animations** - Smooth transitions and micro-interactions
+- 🎪 **Advanced Components** - Data tables, modals, alerts, and more
+- 🎨 **Design System** - Consistent spacing, colors, and typography
 
-## 🚀 Installation
+## Installation
 
 ```bash
 npm install keypix-ui
 ```
 
-## 📦 Setup Tailwind CSS
+## Peer Dependencies
 
-This UI kit requires Tailwind CSS v4 to be installed and configured in your project.
+This library requires the following peer dependencies:
 
-### 1. Install Tailwind CSS v4
-
-```bash
-npm install -D tailwindcss
-```
-
-### 2. Configure Tailwind CSS
-
-Create `tailwind.config.js`:
-
-```js
-/** @type {import('tailwindcss').Config} */
-export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-    "./node_modules/keypix-ui/**/*.{js,ts,jsx,tsx}" // Important: Include keypix-ui
-  ],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
+```json
+{
+  "react": ">=18.0.0",
+  "react-dom": ">=18.0.0",
+  "tailwindcss": ">=4.0.0"
 }
 ```
 
-### 3. Add Tailwind to your CSS
-
-In your main CSS file (e.g., `src/index.css`):
-
-```css
-@import "tailwindcss/preflight";
-@import "tailwindcss/utilities";
-```
-
-**Note**: Tailwind CSS v4 uses `@import` instead of `@tailwind` directives.
-
-## 📖 Usage
-
-### Import Components
+## Quick Start
 
 ```tsx
-import { Button, Input, SearchBar, Header } from "keypix-ui";
-```
-
-### Basic Example
-
-```tsx
-import { Button, Input, SearchBar, Header } from "keypix-ui";
+import { ThemeProvider } from 'keypix-ui'
+import { Button, Input, SearchBar } from 'keypix-ui'
 
 function App() {
   return (
-    <div>
-      <Header 
-        title="My App"
-        onSearch={(value) => console.log('Search:', value)}
-        onLogin={() => console.log('Login')}
-        onSignup={() => console.log('Signup')}
-      />
-      
-      <div className="p-4">
+    <ThemeProvider>
+      <div>
+        <Button>Click me</Button>
+        <Input placeholder="Enter text..." />
         <SearchBar 
           placeholder="Search..."
-          onSearch={(value) => console.log('Search:', value)}
+          onSearch={(value) => console.log(value)}
         />
-        
-        <Button variant="destructive">Delete</Button>
       </div>
-    </div>
-  );
+    </ThemeProvider>
+  )
 }
 ```
 
-## 🎨 Atomic Design Components
+## 🎨 Components
 
-### Atoms (Basic Building Blocks)
+### Atoms
 
 #### Button
+
 ```tsx
+import { Button } from 'keypix-ui'
+
+// Variants
 <Button>Default</Button>
 <Button variant="destructive">Delete</Button>
 <Button variant="outline">Outline</Button>
 <Button variant="ghost">Ghost</Button>
 <Button variant="link">Link</Button>
 <Button variant="secondary">Secondary</Button>
+
+// Sizes
 <Button size="sm">Small</Button>
+<Button size="md">Medium</Button>
 <Button size="lg">Large</Button>
 ```
 
-**Props:**
-- `variant`: `"default" | "destructive" | "outline" | "ghost" | "link" | "secondary"`
-- `size`: `"sm" | "md" | "lg" | "icon"`
-
 #### Input
+
 ```tsx
-<Input placeholder="Enter text..." />
-<Input type="email" placeholder="Email" />
-<Input type="password" placeholder="Password" />
+import { Input } from 'keypix-ui'
+
+<Input placeholder="Enter your name..." />
+<Input type="email" placeholder="Email address" />
+<Input 
+  placeholder="With error" 
+  error={true}
+  helperText="This field is required"
+/>
 ```
 
-### Molecules (Simple Combinations)
+#### Badge
+
+```tsx
+import { Badge } from 'keypix-ui'
+
+<Badge>Default</Badge>
+<Badge variant="success">Success</Badge>
+<Badge variant="warning">Warning</Badge>
+<Badge variant="destructive">Error</Badge>
+<Badge variant="outline">Outline</Badge>
+```
+
+#### Avatar
+
+```tsx
+import { Avatar } from 'keypix-ui'
+
+<Avatar src="https://example.com/avatar.jpg" alt="User" />
+<Avatar fallback="JD" />
+<Avatar size="lg" fallback="AB" />
+```
+
+#### Spinner
+
+```tsx
+import { Spinner } from 'keypix-ui'
+
+<Spinner size="md" />
+<Spinner variant="primary" />
+<Spinner variant="success" />
+```
+
+#### Card
+
+```tsx
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from 'keypix-ui'
+
+<Card>
+  <CardHeader>
+    <CardTitle>Card Title</CardTitle>
+    <CardDescription>Card description</CardDescription>
+  </CardHeader>
+  <CardContent>
+    <p>Card content goes here</p>
+  </CardContent>
+</Card>
+```
+
+### Molecules
 
 #### SearchBar
+
 ```tsx
+import { SearchBar } from 'keypix-ui'
+
 <SearchBar 
-  placeholder="Search..."
+  placeholder="Search components..."
   onSearch={(value) => console.log('Search:', value)}
+  disabled={false}
 />
 ```
 
-**Props:**
-- `placeholder`: Search input placeholder
-- `onSearch`: Callback function when search is triggered
-- `className`: Additional CSS classes
+#### Alert
 
-### Organisms (Complex UI Sections)
+```tsx
+import { Alert, AlertTitle, AlertDescription } from 'keypix-ui'
+
+<Alert>
+  <AlertTitle>Default Alert</AlertTitle>
+  <AlertDescription>This is a default alert message.</AlertDescription>
+</Alert>
+
+<Alert variant="destructive">
+  <AlertTitle>Error</AlertTitle>
+  <AlertDescription>This is an error message.</AlertDescription>
+</Alert>
+```
+
+#### Modal
+
+```tsx
+import { Modal } from 'keypix-ui'
+
+<Modal
+  isOpen={isOpen}
+  onClose={() => setIsOpen(false)}
+  title="Example Modal"
+  description="Modal description"
+>
+  <p>Modal content goes here</p>
+</Modal>
+```
+
+### Organisms
 
 #### Header
+
 ```tsx
+import { Header } from 'keypix-ui'
+
 <Header 
-  title="App Title"
+  title="My App"
   onSearch={(value) => console.log('Search:', value)}
-  onLogin={() => console.log('Login')}
-  onSignup={() => console.log('Signup')}
+  onLogin={() => console.log('Login clicked')}
+  onSignup={() => console.log('Signup clicked')}
+  showSearch={true}
 />
 ```
 
-**Props:**
-- `title`: Header title
-- `onSearch`: Search callback function
-- `onLogin`: Login button callback
-- `onSignup`: Signup button callback
-- `className`: Additional CSS classes
+#### DataTable
 
-## 🏗️ Architecture
+```tsx
+import { DataTable } from 'keypix-ui'
 
-This library follows the **Atomic Design Pattern**:
+const data = [
+  { id: 1, name: 'John Doe', email: 'john@example.com', status: 'active' },
+  { id: 2, name: 'Jane Smith', email: 'jane@example.com', status: 'inactive' },
+]
 
-- **Atoms**: Basic building blocks (Button, Input, etc.)
-- **Molecules**: Simple combinations of atoms (SearchBar)
-- **Organisms**: Complex UI sections (Header, Footer, etc.)
-- **Templates**: Page layouts (coming soon)
-- **Pages**: Specific page implementations (coming soon)
+const columns = [
+  { key: 'id', title: 'ID', sortable: true },
+  { key: 'name', title: 'Name', sortable: true },
+  { key: 'email', title: 'Email', sortable: true },
+  { key: 'status', title: 'Status', sortable: true },
+]
 
-## 🛠️ Tech Stack
+<DataTable
+  data={data}
+  columns={columns}
+  searchable
+  sortable
+  pagination
+  onRowClick={(row) => console.log('Row clicked:', row)}
+/>
+```
 
-- React 18+
-- TypeScript
-- TailwindCSS v4
-- class-variance-authority
-- Vite
+## 🌙 Theme System
 
-## 📦 NPM Package
+KeyPix UI includes a comprehensive theme system with dark mode support:
 
-Available on npm: [keypix-ui](https://www.npmjs.com/package/keypix-ui)
+```tsx
+import { ThemeProvider, useTheme } from 'keypix-ui'
 
-## 🤝 Contributing
+function App() {
+  const { theme, setTheme } = useTheme()
+  
+  return (
+    <div>
+      <select value={theme} onChange={(e) => setTheme(e.target.value)}>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+        <option value="system">System</option>
+      </select>
+    </div>
+  )
+}
+```
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+## 🎨 Design System
 
-### Development
+The library includes a complete design system with:
+
+- **Colors**: Primary, secondary, success, warning, error variants
+- **Typography**: Consistent font sizes, weights, and line heights
+- **Spacing**: Standardized spacing scale
+- **Shadows**: Multiple shadow levels for depth
+- **Animations**: Pre-built animation utilities
+
+## 🚀 Development
+
+### Setup
+
+```bash
+git clone <repository>
+cd keypix-ui
+npm install
+```
+
+### Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build the library
+- `npm run lint` - Run ESLint
+- `npm run type-check` - Run TypeScript type checking
+- `npm run preview` - Preview the build
+
+### Project Structure
+
+```
+src/
+├── components/
+│   ├── atoms/          # Basic building blocks
+│   ├── molecules/      # Simple combinations of atoms
+│   ├── organisms/      # Complex UI components
+│   └── providers/      # Context providers
+├── lib/
+│   ├── utils.ts        # Utility functions
+│   ├── design-system.ts # Design tokens
+│   ├── animations.ts   # Animation utilities
+│   └── theme.ts        # Theme management
+├── styles/
+│   └── theme.css       # CSS variables
+└── index.ts           # Main export file
+```
+
+## Contributing
 
 1. Fork the repository
 2. Create a feature branch
-3. Follow the Atomic Design pattern
+3. Make your changes
 4. Add tests if applicable
-5. Submit a PR
+5. Submit a pull request
+
+## 🏆 Why KeyPix UI?
+
+- **🎯 Production Ready**: Built with enterprise-grade TypeScript and modern React patterns
+- **🎨 Beautiful by Default**: Carefully crafted design that looks great out of the box
+- **⚡ Performance Optimized**: Zero runtime overhead, tree-shakeable components
+- **🔧 Developer Experience**: Excellent TypeScript support and comprehensive documentation
+- **🌍 Accessibility**: Built with accessibility in mind, following WCAG guidelines
+- **📱 Responsive**: Mobile-first design that works on all screen sizes
+- **🎭 Modern**: Latest React 18+ features with concurrent rendering support
+
+## 🤝 Contributing
+
+We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
 
 ## 📄 License
 
-MIT License - see the [LICENSE](LICENSE) file for details.
+MIT License - see [LICENSE](LICENSE) file for details
+
+---
+
+Made with ❤️ by the KeyPix UI team

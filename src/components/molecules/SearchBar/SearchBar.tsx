@@ -5,16 +5,17 @@ import { cn } from "../../../lib/utils"
 
 export interface SearchBarProps {
   placeholder?: string
-  onSearch?: (value: string) => void
+  onSearch: (value: string) => void
   className?: string
+  disabled?: boolean
 }
 
 const SearchBar = React.forwardRef<HTMLDivElement, SearchBarProps>(
-  ({ placeholder = "Search...", onSearch, className }, ref) => {
-    const [value, setValue] = React.useState("")
+  ({ placeholder = "Search...", onSearch, className, disabled }, ref) => {
+    const [searchValue, setSearchValue] = React.useState("")
 
     const handleSearch = () => {
-      onSearch?.(value)
+      onSearch(searchValue)
     }
 
     const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -27,12 +28,17 @@ const SearchBar = React.forwardRef<HTMLDivElement, SearchBarProps>(
       <div ref={ref} className={cn("flex gap-2", className)}>
         <Input
           placeholder={placeholder}
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
+          value={searchValue}
+          onChange={(e) => setSearchValue(e.target.value)}
           onKeyPress={handleKeyPress}
+          disabled={disabled}
           className="flex-1"
         />
-        <Button onClick={handleSearch} size="sm">
+        <Button 
+          onClick={handleSearch}
+          disabled={disabled || !searchValue.trim()}
+          size="md"
+        >
           Search
         </Button>
       </div>
