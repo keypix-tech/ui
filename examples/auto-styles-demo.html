@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keypix UI - Auto Styles Demo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Demo-specific styles */
+        
+        .demo-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .demo-section {
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            background: #fafafa;
+        }
+        
+        .demo-title {
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .demo-description {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .test-element {
+            margin: 10px;
+            padding: 15px;
+            border: 2px dashed #ccc;
+            border-radius: 4px;
+            background: white;
+        }
+        
+        .font-test {
+            font-size: 18px;
+            font-weight: 500;
+        }
+        
+        .before-after {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .before,
+        .after {
+            padding: 15px;
+            border-radius: 4px;
+        }
+        
+        .before {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+        }
+        
+        .after {
+            background: #d1ecf1;
+            border: 1px solid #bee5eb;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="demo-container">
+        <h1>🎨 Keypix UI - Auto Styles Demo</h1>
+        <p>This demo shows how global styles are automatically applied when importing Keypix UI.</p>
+
+        <div class="demo-section">
+            <h2 class="demo-title">📋 What Gets Applied Automatically</h2>
+            <div class="demo-description">
+                When you import Keypix UI, these global styles are automatically injected:
+            </div>
+
+            <div class="before-after">
+                <div class="before">
+                    <h3>Before Import:</h3>
+                    <ul>
+                        <li>Default browser margins and padding</li>
+                        <li>Default browser font (Times New Roman, Arial, etc.)</li>
+                        <li>Default focus outlines</li>
+                        <li>Default box-sizing</li>
+                    </ul>
+                </div>
+                <div class="after">
+                    <h3>After Import:</h3>
+                    <ul>
+                        <li>✅ Margin: 0, Padding: 0 (clean slate)</li>
+                        <li>✅ Font: Inter, sans-serif</li>
+                        <li>✅ Focus/Active: outline: none</li>
+                        <li>✅ Box-sizing: border-box</li>
+                        <li>✅ Webkit tap highlight: transparent</li>
+                        <li>✅ HTML/Body height: 100%</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2 class="demo-title">🧪 Test Elements</h2>
+            <div class="demo-description">
+                These elements demonstrate the applied styles:
+            </div>
+
+            <div class="test-element">
+                <h3>Font Test</h3>
+                <p class="font-test">This text uses Inter font family (automatically applied)</p>
+                <p>Regular paragraph text also uses Inter</p>
+            </div>
+
+            <div class="test-element">
+                <h3>Form Elements</h3>
+                <button style="padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; margin: 5px;">
+                    Button with Inter Font
+                </button>
+                <input type="text" placeholder="Input with Inter font" style="padding: 10px; border: 1px solid #ccc; border-radius: 4px; margin: 5px;">
+                <textarea placeholder="Textarea with Inter font" style="padding: 10px; border: 1px solid #ccc; border-radius: 4px; margin: 5px; width: 200px; height: 60px;"></textarea>
+            </div>
+
+            <div class="test-element">
+                <h3>Focus Test</h3>
+                <p>Click on the button below and notice no default outline appears:</p>
+                <button style="padding: 10px 20px; background: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                    Click me (no outline on focus)
+                </button>
+            </div>
+
+            <div class="test-element">
+                <h3>Box Model Test</h3>
+                <div style="width: 200px; height: 100px; background: #f8f9fa; border: 2px solid #dee2e6; padding: 20px; margin: 10px;">
+                    <p>This box uses border-box sizing (padding included in width/height)</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2 class="demo-title">🔧 How It Works</h2>
+            <div class="demo-description">
+                The auto-styling is implemented in the library's entry point:
+            </div>
+
+            <pre style="background: #f8f9fa; padding: 15px; border-radius: 4px; overflow-x: auto;">
+// src/index.ts
+import './lib/auto-styles'  // This line triggers style injection
+
+export * from './components/atoms'
+export * from './components/molecules'
+// ... other exports
+            </pre>
+
+            <p>The <code>auto-styles.ts</code> file contains the CSS and automatically injects it into the document head when the library is imported.</p>
+        </div>
+
+        <div class="demo-section">
+            <h2 class="demo-title">📱 Mobile Optimizations</h2>
+            <div class="demo-description">
+                Additional mobile-friendly styles are also applied:
+            </div>
+            <ul>
+                <li><strong>-webkit-tap-highlight-color: transparent</strong> - Removes the blue highlight on mobile taps</li>
+                <li><strong>html, body { height: 100% }</strong> - Ensures full height for mobile layouts</li>
+                <li><strong>box-sizing: border-box</strong> - Makes sizing more predictable across devices</li>
+            </ul>
+        </div>
+    </div>
+
+    <script type="module">
+        // Simulate importing the library console.log('🎨 Keypix UI Auto Styles Demo'); console.log('📦 Library imported - global styles should be applied'); // You can test the actual library import here: // import { Button } from '../dist/index.js';
+    </script>
+</body>
+
+</html>
