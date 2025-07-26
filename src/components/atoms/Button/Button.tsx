@@ -65,7 +65,7 @@ const Button = React.memo(React.forwardRef<HTMLButtonElement, ButtonProps>(({
 
   // Accessibility attributes
   const accessibilityProps = {
-    'aria-label': ariaLabel,
+    'aria-label': loading ? 'Loading...' : ariaLabel,
     'aria-describedby': ariaDescription ? `${props.id || 'button'}-description` : undefined,
     'aria-live': ariaLive,
     'aria-busy': loading,

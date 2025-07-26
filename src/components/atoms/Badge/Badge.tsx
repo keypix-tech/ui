@@ -79,7 +79,7 @@ const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
           <button
             type="button"
             onClick={handleRemove}
-            className="keypix-ml-1 keypix-inline-flex keypix-items-center keypix-rounded-full keypix-p-0.5 hover:keypix-bg-black/10 dark:hover:keypix-bg-white/10 focus:keypix-outline-none focus:keypix-bg-black/10 dark:focus:keypix-bg-white/10 keypix-transition-colors"
+            className="keypix-badge-remove"
             aria-label="Remove badge"
           >
             {removeIcon || defaultRemoveIcon}

@@ -2,8 +2,8 @@ import * as React from "react"
 import { cn } from "../../../lib/utils"
 import { Button } from "../../atoms/Button"
 import { Input } from "../../atoms/Input"
-
 import { Spinner } from "../../atoms/Spinner"
+import { injectKeypixStyles } from "../../../lib/auto-styles"
 
 export interface Column<T> {
   key: keyof T
@@ -36,6 +36,11 @@ export function DataTable<T extends Record<string, unknown>>({
   onRowClick,
   className,
 }: DataTableProps<T>) {
+  // Inject styles on first render
+  React.useEffect(() => {
+    injectKeypixStyles()
+  }, [])
+
   const [searchTerm, setSearchTerm] = React.useState("")
   const [sortColumn, setSortColumn] = React.useState<keyof T | null>(null)
   const [sortDirection, setSortDirection] = React.useState<"asc" | "desc">("asc")
@@ -96,46 +101,46 @@ export function DataTable<T extends Record<string, unknown>>({
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center p-8">
+      <div className="keypix-data-table-loading">
         <Spinner size="lg" />
       </div>
     )
   }
 
   return (
-    <div className={cn("space-y-4", className)}>
+    <div className={cn("keypix-data-table", className)}>
       {/* Search */}
       {searchable && (
-        <div className="flex items-center space-x-2">
+        <div className="keypix-data-table-search">
           <Input
             placeholder="Search..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="max-w-sm"
+            className="keypix-max-w-sm"
           />
         </div>
       )}
 
       {/* Table */}
-      <div className="rounded-md border">
-        <div className="overflow-x-auto">
-          <table className="w-full">
-            <thead className="border-b bg-muted/50">
+      <div className="keypix-data-table-container">
+        <div className="keypix-data-table-wrapper">
+          <table className="keypix-data-table-table">
+            <thead className="keypix-data-table-thead">
               <tr>
                 {columns.map((column) => (
                   <th
                     key={String(column.key)}
                     className={cn(
-                      "px-4 py-3 text-left text-sm font-medium text-muted-foreground",
-                      column.sortable && sortable && "cursor-pointer hover:bg-muted",
+                      "keypix-data-table-th",
+                      column.sortable && sortable && "keypix-data-table-th-sortable",
                       column.width
                     )}
                     onClick={() => handleSort(column.key)}
                   >
-                    <div className="flex items-center space-x-1">
+                    <div className="keypix-data-table-th-content">
                       <span>{column.title}</span>
                       {column.sortable && sortable && sortColumn === column.key && (
-                        <span className="text-xs">
+                        <span className="keypix-data-table-sort-icon">
                           {sortDirection === "asc" ? "↑" : "↓"}
                         </span>
                       )}
@@ -144,12 +149,12 @@ export function DataTable<T extends Record<string, unknown>>({
                 ))}
               </tr>
             </thead>
-            <tbody>
+            <tbody className="keypix-data-table-tbody">
               {paginatedData.length === 0 ? (
                 <tr>
                   <td
                     colSpan={columns.length}
-                    className="px-4 py-8 text-center text-sm text-muted-foreground"
+                    className="keypix-data-table-empty"
                   >
                     No data found
                   </td>
@@ -159,13 +164,13 @@ export function DataTable<T extends Record<string, unknown>>({
                   <tr
                     key={rowIndex}
                     className={cn(
-                      "border-b transition-colors hover:bg-muted/50",
-                      onRowClick && "cursor-pointer"
+                      "keypix-data-table-tr",
+                      onRowClick && "keypix-data-table-tr-clickable"
                     )}
                     onClick={() => handleRowClick(row)}
                   >
                     {columns.map((column) => (
-                      <td key={String(column.key)} className="px-4 py-3 text-sm">
+                      <td key={String(column.key)} className="keypix-data-table-td">
                         {column.render
                           ? column.render(row[column.key], row)
                           : String(row[column.key] ?? "")}
@@ -181,13 +186,13 @@ export function DataTable<T extends Record<string, unknown>>({
 
       {/* Pagination */}
       {pagination && totalPages > 1 && (
-        <div className="flex items-center justify-between">
-          <div className="text-sm text-muted-foreground">
+        <div className="keypix-data-table-pagination">
+          <div className="keypix-data-table-pagination-info">
             Showing {((currentPage - 1) * pageSize) + 1} to{" "}
             {Math.min(currentPage * pageSize, sortedData.length)} of{" "}
             {sortedData.length} results
           </div>
-          <div className="flex items-center space-x-2">
+          <div className="keypix-data-table-pagination-controls">
             <Button
               variant="outline"
               size="sm"
@@ -196,14 +201,14 @@ export function DataTable<T extends Record<string, unknown>>({
             >
               Previous
             </Button>
-            <div className="flex items-center space-x-1">
+            <div className="keypix-data-table-pagination-pages">
               {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
                 <Button
                   key={page}
                   variant={currentPage === page ? "default" : "outline"}
                   size="sm"
                   onClick={() => setCurrentPage(page)}
-                  className="w-8 h-8 p-0"
+                  className="keypix-data-table-pagination-page"
                 >
                   {page}
                 </Button>

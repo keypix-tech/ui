@@ -1,6 +1,6 @@
 # 🎨 Keypix UI
 
-> **A premium React component library built with TypeScript and Atomic Design principles. The most comprehensive and beautiful UI library available.**
+> **A premium React component library built with TypeScript, Pure CSS, and Atomic Design principles. The most comprehensive and beautiful UI library available.**
 
 [![npm version](https://badge.fury.io/js/keypix-ui.svg)](https://badge.fury.io/js/keypix-ui)
 [![bundle size](https://img.shields.io/bundlephobia/minzip/keypix-ui)](https://bundlephobia.com/result?p=keypix-ui)
@@ -11,7 +11,7 @@
 
 ![Keypix UI Demo](https://keypix.uz/favicon.png)
 
-**Lightweight • Accessible • Customizable • TypeScript • Zero Config**
+**Lightweight • Accessible • Customizable • TypeScript • Pure CSS • Zero Config**
 
 [📖 Documentation](https://ui.keypix.uz/docs) • [🎨 Live Demo](#live-demo) • [🚀 Quick Start](#quick-start) • [💡 Examples](#examples)
 

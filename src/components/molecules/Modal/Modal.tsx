@@ -1,6 +1,7 @@
 import * as React from "react"
 import { createPortal } from "react-dom"
 import { cn } from "../../../lib/utils"
+import { injectKeypixStyles } from "../../../lib/auto-styles"
 
 export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
   isOpen: boolean
@@ -26,6 +27,11 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>(
     ...props 
   }, ref) => {
     const [mounted, setMounted] = React.useState(false)
+
+    // Inject styles on first render
+    React.useEffect(() => {
+      injectKeypixStyles()
+    }, [])
 
     React.useEffect(() => {
       setMounted(true)
@@ -56,54 +62,54 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>(
     }
 
     const sizeClasses = {
-      sm: 'max-w-sm',
-      md: 'max-w-md',
-      lg: 'max-w-lg',
-      xl: 'max-w-xl',
-      full: 'max-w-full mx-4',
+      sm: 'keypix-modal-sm',
+      md: 'keypix-modal-md',
+      lg: 'keypix-modal-lg',
+      xl: 'keypix-modal-xl',
+      full: 'keypix-modal-full',
     }
 
     if (!mounted || !isOpen) return null
 
     return createPortal(
       <div
-        className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm"
+        className="keypix-modal-overlay"
         onClick={handleOverlayClick}
       >
         <div
           ref={ref}
           className={cn(
-            "relative w-full rounded-lg bg-background p-6 shadow-lg",
+            "keypix-modal-content",
             sizeClasses[size],
             className
           )}
           {...props}
         >
           {(title || description) && (
-            <div className="mb-4">
+            <div className="keypix-modal-header">
               {title && (
-                <h2 className="text-lg font-semibold text-foreground">
+                <h2 className="keypix-modal-title">
                   {title}
                 </h2>
               )}
               {description && (
-                <p className="mt-1 text-sm text-muted-foreground">
+                <p className="keypix-modal-description">
                   {description}
                 </p>
               )}
             </div>
           )}
           
-          <div className="relative">
+          <div className="keypix-relative">
             {children}
           </div>
 
           <button
             onClick={onClose}
-            className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+            className="keypix-modal-close"
           >
             <svg
-              className="h-4 w-4"
+              className="keypix-h-4 keypix-w-4"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -115,7 +121,7 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>(
                 d="M6 18L18 6M6 6l12 12"
               />
             </svg>
-            <span className="sr-only">Close</span>
+            <span className="keypix-sr-only">Close</span>
           </button>
         </div>
       </div>,

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keypix UI - Fixed Components Demo</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            padding: 2rem;
+            background: #f5f5f5;
+        }
+        
+        .demo-section {
+            background: white;
+            padding: 2rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .demo-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .demo-item {
+            padding: 1rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            text-align: center;
+        }
+        
+        .spinner-demo {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .badge-demo {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .input-demo {
+            max-width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>🎨 Keypix UI - Fixed Components Demo</h1>
+    <p>Демонстрация исправленных компонентов без Tailwind CSS</p>
+
+    <!-- Button Demo -->
+    <div class="demo-section">
+        <h2 class="demo-title">🔘 Buttons</h2>
+        <div class="demo-grid">
+            <div class="demo-item">
+                <h3>Variants</h3>
+                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                    <button class="keypix-button keypix-button-default keypix-button-md">Default</button>
+                    <button class="keypix-button keypix-button-secondary keypix-button-md">Secondary</button>
+                    <button class="keypix-button keypix-button-destructive keypix-button-md">Destructive</button>
+                    <button class="keypix-button keypix-button-outline keypix-button-md">Outline</button>
+                    <button class="keypix-button keypix-button-ghost keypix-button-md">Ghost</button>
+                    <button class="keypix-button keypix-button-link keypix-button-md">Link</button>
+                </div>
+            </div>
+            <div class="demo-item">
+                <h3>Sizes</h3>
+                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                    <button class="keypix-button keypix-button-default keypix-button-xs">Extra Small</button>
+                    <button class="keypix-button keypix-button-default keypix-button-sm">Small</button>
+                    <button class="keypix-button keypix-button-default keypix-button-md">Medium</button>
+                    <button class="keypix-button keypix-button-default keypix-button-lg">Large</button>
+                    <button class="keypix-button keypix-button-default keypix-button-xl">Extra Large</button>
+                </div>
+            </div>
+            <div class="demo-item">
+                <h3>Loading States</h3>
+                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                    <button class="keypix-button keypix-button-default keypix-button-md" disabled>
+                        <div class="keypix-spinner keypix-spinner-sm keypix-mr-2"></div>
+                        Loading...
+                    </button>
+                    <button class="keypix-button keypix-button-success keypix-button-md" disabled>
+                        <div class="keypix-spinner keypix-spinner-sm keypix-mr-2"></div>
+                        Processing
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Spinner Demo -->
+    <div class="demo-section">
+        <h2 class="demo-title">🌀 Spinners</h2>
+        <div class="spinner-demo">
+            <div class="demo-item">
+                <h3>XS</h3>
+                <div class="keypix-spinner keypix-spinner-xs"></div>
+            </div>
+            <div class="demo-item">
+                <h3>SM</h3>
+                <div class="keypix-spinner keypix-spinner-sm"></div>
+            </div>
+            <div class="demo-item">
+                <h3>MD</h3>
+                <div class="keypix-spinner keypix-spinner-md"></div>
+            </div>
+            <div class="demo-item">
+                <h3>LG</h3>
+                <div class="keypix-spinner keypix-spinner-lg"></div>
+            </div>
+            <div class="demo-item">
+                <h3>XL</h3>
+                <div class="keypix-spinner keypix-spinner-xl"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Badge Demo -->
+    <div class="demo-section">
+        <h2 class="demo-title">🏷️ Badges</h2>
+        <div class="badge-demo">
+            <div class="keypix-badge keypix-badge-default">Default</div>
+            <div class="keypix-badge keypix-badge-secondary">Secondary</div>
+            <div class="keypix-badge keypix-badge-destructive">Destructive</div>
+            <div class="keypix-badge keypix-badge-outline">Outline</div>
+            <div class="keypix-badge keypix-badge-success">Success</div>
+            <div class="keypix-badge keypix-badge-warning">Warning</div>
+            <div class="keypix-badge keypix-badge-info">Info</div>
+        </div>
+
+        <h3 style="margin-top: 2rem;">Removable Badges</h3>
+        <div class="badge-demo">
+            <div class="keypix-badge keypix-badge-default">
+                Removable
+                <button class="keypix-badge-remove" onclick="this.parentElement.remove()">
+                    <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <div class="keypix-badge keypix-badge-success">
+                Success Badge
+                <button class="keypix-badge-remove" onclick="this.parentElement.remove()">
+                    <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Input Demo -->
+    <div class="demo-section">
+        <h2 class="demo-title">📝 Inputs</h2>
+        <div class="input-demo">
+            <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Regular Input</label>
+            <input type="text" class="keypix-input" placeholder="Type something...">
+
+            <label style="display: block; margin: 1rem 0 0.5rem; font-weight: 500;">Focused Input (click to test)</label>
+            <input type="text" class="keypix-input" placeholder="Click to focus...">
+
+            <label style="display: block; margin: 1rem 0 0.5rem; font-weight: 500;">Disabled Input</label>
+            <input type="text" class="keypix-input" placeholder="Disabled" disabled>
+        </div>
+    </div>
+
+    <!-- Modal Demo -->
+    <div class="demo-section">
+        <h2 class="demo-title">🪟 Modal</h2>
+        <button class="keypix-button keypix-button-default keypix-button-md" onclick="openModal()">
+            Open Modal
+        </button>
+    </div>
+
+    <!-- Modal -->
+    <div id="demoModal" class="keypix-modal-overlay" style="display: none;">
+        <div class="keypix-modal-content keypix-modal-md">
+            <div class="keypix-modal-header">
+                <h2 class="keypix-modal-title">Demo Modal</h2>
+                <p class="keypix-modal-description">This is a working modal without Tailwind CSS!</p>
+            </div>
+            <div class="keypix-relative">
+                <p>🎉 Все компоненты работают правильно!</p>
+                <ul style="margin: 1rem 0; padding-left: 1.5rem;">
+                    <li>✅ Модалка открывается и закрывается</li>
+                    <li>✅ Спиннеры разных размеров</li>
+                    <li>✅ Бейджи с removable иконками</li>
+                    <li>✅ Инпуты с правильным focus</li>
+                    <li>✅ Кнопки с анимациями</li>
+                    <li>✅ Шрифт Inter загружается автоматически</li>
+                </ul>
+            </div>
+            <button class="keypix-modal-close" onclick="closeModal()">
+                <svg class="keypix-h-4 keypix-w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+                <span class="keypix-sr-only">Close</span>
+            </button>
+        </div>
+    </div>
+
+    <script type="module">
+        // Import the library to inject styles import('http://localhost:5173/src/index.ts').catch(() => { console.log('Development server not running, using fallback styles'); }); // Modal functions window.openModal = function() { document.getElementById('demoModal').style.display
+        = 'flex'; document.body.style.overflow = 'hidden'; }; window.closeModal = function() { document.getElementById('demoModal').style.display = 'none'; document.body.style.overflow = 'unset'; }; // Close modal on overlay click document.getElementById('demoModal').addEventListener('click',
+        function(e) { if (e.target === this) { closeModal(); } }); // Close modal on Escape key document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && document.getElementById('demoModal').style.display === 'flex') { closeModal();
+        } });
+    </script>
+</body>
+
+</html>

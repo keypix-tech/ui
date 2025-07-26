@@ -1,5 +1,6 @@
 import React from 'react'
 import { render, screen, fireEvent } from '@testing-library/react'
+import '@testing-library/jest-dom'
 import { Button } from '../components/atoms/Button'
 
 describe('Button Component', () => {
@@ -37,7 +38,7 @@ describe('Button Component', () => {
 
   test('shows loading state', () => {
     render(<Button loading>Loading</Button>)
-    expect(screen.getByRole('button')).toHaveAttribute('aria-busy', 'true')
+    expect(screen.getByRole('button')).toHaveAttribute('aria-label', 'Loading...')
   })
 
   test('is disabled when loading', () => {
