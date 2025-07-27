@@ -19,6 +19,7 @@ const CSS_VARIABLES = `
 }
 
 *:focus,
+*:focus-visible,
 *:active {
   outline: none;
 }
@@ -278,11 +279,6 @@ const COMPONENT_STYLES = `
   box-shadow: 0 0 0 2px hsl(var(--ring) / 0.2);
 }
 
-.keypix-input:focus-visible {
-  outline: 2px solid hsl(var(--ring));
-  outline-offset: 2px;
-}
-
 .keypix-input::placeholder {
   color: hsl(var(--muted-foreground));
 }
@@ -525,11 +521,6 @@ const COMPONENT_STYLES = `
   opacity: 1;
 }
 
-.keypix-modal-close:focus {
-  outline: 2px solid hsl(var(--ring));
-  outline-offset: 2px;
-}
-
 /* Enhanced Spinner Component */
 .keypix-spinner {
   display: inline-block;
@@ -589,11 +580,6 @@ const COMPONENT_STYLES = `
   box-shadow: 0 0 0 2px hsl(var(--ring) / 0.2);
 }
 
-.keypix-input:focus-visible {
-  outline: 2px solid hsl(var(--ring));
-  outline-offset: 2px;
-}
-
 .keypix-input::placeholder {
   color: hsl(var(--muted-foreground));
 }
@@ -635,11 +621,6 @@ const COMPONENT_STYLES = `
 
 .dark .keypix-badge-remove:hover {
   background-color: rgba(255, 255, 255, 0.1);
-}
-
-.keypix-badge-remove:focus {
-  outline: 2px solid currentColor;
-  outline-offset: 1px;
 }
 
 /* Button animations */
