@@ -1,17 +1,28 @@
 import * as React from "react"
 import { cn } from "../../../lib/utils"
 import { injectKeypixStyles } from "../../../lib/auto-styles"
+import type { Size, Variant } from "../../../types/unified"
 
 export type SpinnerType = 'dots' | 'spinner' | 'pulse' | 'bars'
 
 export interface SpinnerProps extends React.HTMLAttributes<HTMLDivElement> {
-  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
-  variant?: 'default' | 'primary' | 'secondary' | 'success' | 'warning' | 'error'
+  size?: Size
+  variant?: Variant
   type?: SpinnerType
   text?: string
   textPosition?: 'top' | 'bottom' | 'left' | 'right'
   overlay?: boolean
   overlayText?: string
+  /** Spinner color */
+  color?: 'primary' | 'secondary' | 'success' | 'warning' | 'error' | 'info' | 'muted'
+  /** Whether spinner is rounded */
+  rounded?: boolean
+  /** Whether spinner has shadow */
+  elevated?: boolean
+  /** Spinner border radius */
+  borderRadius?: 'none' | 'sm' | 'md' | 'lg' | 'xl' | 'full'
+  /** Whether spinner has border */
+  bordered?: boolean
 }
 
 const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
@@ -24,6 +35,11 @@ const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
     textPosition = 'bottom',
     overlay = false,
     overlayText,
+    color,
+    rounded = false,
+    elevated = false,
+    borderRadius = 'md',
+    bordered = false,
     ...props 
   }, ref) => {
     // Inject styles on first render
@@ -37,6 +53,7 @@ const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
       md: 'keypix-h-6 keypix-w-6',
       lg: 'keypix-h-8 keypix-w-8',
       xl: 'keypix-h-12 keypix-w-12',
+      '2xl': 'keypix-h-16 keypix-w-16',
     }
 
     const variantClasses = {
@@ -46,6 +63,11 @@ const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
       success: 'keypix-text-green-500',
       warning: 'keypix-text-yellow-500',
       error: 'keypix-text-red-500',
+      destructive: 'keypix-text-red-500',
+      outline: 'keypix-text-gray-500',
+      ghost: 'keypix-text-gray-400',
+      link: 'keypix-text-blue-500',
+      info: 'keypix-text-blue-500',
     }
 
     const textPositionClasses = {
@@ -54,6 +76,19 @@ const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
       left: 'keypix-flex-row-reverse',
       right: 'keypix-flex-row',
     }
+
+    const spinnerClasses = cn(
+      'keypix-spinner',
+      `keypix-spinner-${type}`,
+      `keypix-spinner-${size}`,
+      variantClasses[variant],
+      color && `keypix-spinner-${color}`,
+      rounded && 'keypix-rounded-full',
+      elevated && 'keypix-shadow-md',
+      `keypix-border-radius-${borderRadius}`,
+      bordered && 'keypix-border',
+      className
+    )
 
     const renderSpinner = () => {
       switch (type) {
@@ -66,7 +101,8 @@ const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
                   className={cn(
                     "keypix-rounded-full keypix-animate-pulse",
                     sizeClasses[size],
-                    variantClasses[variant]
+                    variantClasses[variant],
+                    color && `keypix-spinner-${color}`
                   )}
                   style={{ animationDelay: `${i * 0.2}s` }}
                 />
@@ -80,7 +116,8 @@ const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
               className={cn(
                 "keypix-rounded-full keypix-animate-pulse",
                 sizeClasses[size],
-                variantClasses[variant]
+                variantClasses[variant],
+                color && `keypix-spinner-${color}`
               )}
             />
           )
@@ -93,11 +130,12 @@ const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
                   key={i}
                   className={cn(
                     "keypix-w-1 keypix-animate-pulse",
-                    variantClasses[variant]
+                    variantClasses[variant],
+                    color && `keypix-spinner-${color}`
                   )}
                   style={{ 
                     animationDelay: `${i * 0.1}s`,
-                    height: size === 'xs' ? '12px' : size === 'sm' ? '16px' : size === 'md' ? '24px' : size === 'lg' ? '32px' : '48px'
+                    height: size === 'xs' ? '12px' : size === 'sm' ? '16px' : size === 'md' ? '24px' : size === 'lg' ? '32px' : size === 'xl' ? '48px' : '64px'
                   }}
                 />
               ))}
@@ -108,45 +146,23 @@ const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
           return (
             <div
               className={cn(
-                "keypix-spinner",
+                "keypix-animate-spin keypix-border-2 keypix-border-current keypix-border-t-transparent keypix-rounded-full",
                 sizeClasses[size],
-                variantClasses[variant]
+                variantClasses[variant],
+                color && `keypix-spinner-${color}`
               )}
             />
           )
       }
     }
 
-    const content = (
-      <div
-        ref={ref}
-        className={cn(
-          "keypix-flex keypix-items-center keypix-justify-center",
-          text && textPositionClasses[textPosition],
-          className
-        )}
-        {...props}
-      >
-        {renderSpinner()}
-        {text && (
-          <span className={cn(
-            "keypix-text-sm keypix-font-medium",
-            variantClasses[variant],
-            textPosition === 'top' || textPosition === 'bottom' ? 'keypix-mt-2' : 'keypix-ml-2'
-          )}>
-            {text}
-          </span>
-        )}
-      </div>
-    )
-
     if (overlay) {
       return (
-        <div className="keypix-fixed keypix-inset-0 keypix-z-50 keypix-flex keypix-items-center keypix-justify-center keypix-bg-black/50">
-          <div className="keypix-rounded-lg keypix-bg-white keypix-p-6 keypix-shadow-lg dark:keypix-bg-gray-800">
-            {content}
+        <div className="keypix-fixed keypix-inset-0 keypix-bg-black keypix-bg-opacity-50 keypix-flex keypix-items-center keypix-justify-center keypix-z-50">
+          <div className={cn("keypix-bg-white keypix-rounded-lg keypix-p-6 keypix-shadow-lg", spinnerClasses)}>
+            {renderSpinner()}
             {overlayText && (
-              <p className="keypix-mt-2 keypix-text-center keypix-text-sm keypix-text-gray-600 dark:keypix-text-gray-400">
+              <p className="keypix-mt-4 keypix-text-center keypix-text-sm keypix-text-gray-600">
                 {overlayText}
               </p>
             )}
@@ -155,9 +171,35 @@ const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
       )
     }
 
-    return content
+    if (text) {
+      return (
+        <div className={cn("keypix-flex keypix-items-center keypix-justify-center", textPositionClasses[textPosition])}>
+          {renderSpinner()}
+          <span className={cn(
+            "keypix-text-sm keypix-text-gray-600",
+            textPosition === 'top' && "keypix-mb-2",
+            textPosition === 'bottom' && "keypix-mt-2",
+            textPosition === 'left' && "keypix-mr-2",
+            textPosition === 'right' && "keypix-ml-2"
+          )}>
+            {text}
+          </span>
+        </div>
+      )
+    }
+
+    return (
+      <div 
+        className={spinnerClasses} 
+        ref={ref}
+        {...props}
+      >
+        {renderSpinner()}
+      </div>
+    )
   }
 )
+
 Spinner.displayName = "Spinner"
 
 export { Spinner } 

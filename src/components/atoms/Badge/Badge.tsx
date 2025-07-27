@@ -1,12 +1,13 @@
 import * as React from "react"
 import { cn } from "../../../lib/utils"
 import { injectKeypixStyles } from "../../../lib/auto-styles"
+import type { Size, Variant } from "../../../types/unified"
 
 export interface BadgeProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Badge variant */
-  variant?: 'default' | 'secondary' | 'destructive' | 'outline' | 'success' | 'warning' | 'info'
+  variant?: Variant
   /** Badge size */
-  size?: 'sm' | 'md' | 'lg'
+  size?: Size
   /** Icon to display before text */
   leftIcon?: React.ReactNode
   /** Icon to display after text */
@@ -17,6 +18,16 @@ export interface BadgeProps extends React.HTMLAttributes<HTMLDivElement> {
   onRemove?: () => void
   /** Custom remove icon */
   removeIcon?: React.ReactNode
+  /** Badge color */
+  color?: 'primary' | 'secondary' | 'success' | 'warning' | 'error' | 'info' | 'muted'
+  /** Whether badge is rounded */
+  rounded?: boolean
+  /** Whether badge has shadow */
+  elevated?: boolean
+  /** Badge border radius */
+  borderRadius?: 'none' | 'sm' | 'md' | 'lg' | 'xl' | 'full'
+  /** Whether badge has border */
+  bordered?: boolean
 }
 
 const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
@@ -30,6 +41,11 @@ const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
     onRemove,
     removeIcon,
     children,
+    color,
+    rounded = false,
+    elevated = false,
+    borderRadius = 'md',
+    bordered = false,
     ...props 
   }, ref) => {
     // Inject styles on first render
@@ -53,6 +69,11 @@ const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
       'keypix-badge',
       `keypix-badge-${variant}`,
       `keypix-badge-${size}`,
+      color && `keypix-badge-${color}`,
+      rounded && 'keypix-rounded-full',
+      elevated && 'keypix-shadow-md',
+      `keypix-border-radius-${borderRadius}`,
+      bordered && 'keypix-border',
       className
     )
 

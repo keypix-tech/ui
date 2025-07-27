@@ -1,208 +1,43 @@
-# 🎨 Keypix UI
+# Keypix UI Library
 
-> **A premium React component library built with TypeScript, Pure CSS, and Atomic Design principles. The most comprehensive and beautiful UI library available.**
+Современная библиотека React компонентов с унифицированным API для создания консистентных пользовательских интерфейсов.
 
-[![npm version](https://badge.fury.io/js/keypix-ui.svg)](https://badge.fury.io/js/keypix-ui)
-[![bundle size](https://img.shields.io/bundlephobia/minzip/keypix-ui)](https://bundlephobia.com/result?p=keypix-ui)
-[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+## 🚀 Особенности
 
-<div align="center">
+- **Унифицированный API** - консистентные интерфейсы для всех компонентов
+- **TypeScript** - полная типизация и автодополнение
+- **Atomic Design** - структура компонентов по принципу атомарного дизайна
+- **Accessibility** - встроенная поддержка доступности
+- **Customizable** - гибкая система темизации и кастомизации
+- **Modern** - современные React паттерны и хуки
 
-![Keypix UI Demo](https://keypix.uz/favicon.png)
-
-**Lightweight • Accessible • Customizable • TypeScript • Pure CSS • Zero Config**
-
-[📖 Documentation](https://ui.keypix.uz/docs) • [🎨 Live Demo](#live-demo) • [🚀 Quick Start](#quick-start) • [💡 Examples](#examples)
-
-</div>
-
-## ✨ Features
-
-- 🚀 **Ultra Lightweight** - Only 13.47 KB gzipped
-- 🎯 **Zero Configuration** - Works out of the box
-- ♿ **Accessible** - WCAG 2.1 AA compliant
-- 🎨 **Beautiful Design** - Modern, clean aesthetics
-- 🔧 **Fully Customizable** - CSS variables & themes
-- 📱 **Responsive** - Mobile-first approach
-- 🌙 **Dark Mode** - Built-in theme switching
-- ⚡ **High Performance** - Optimized for speed
-- 🔒 **Type Safe** - Full TypeScript support
-- 🧩 **Atomic Design** - Scalable component architecture
-
-## 📦 Installation
+## 📦 Установка
 
 ```bash
-npm install keypix-ui
-# or
-yarn add keypix-ui
-# or
-pnpm add keypix-ui
+npm install @keypix/ui
+# или
+yarn add @keypix/ui
 ```
 
-## 🚀 Quick Start
-
-### 1. Install the library
-
-```bash
-npm install keypix-ui
-```
-
-### 2. Import and use components
+## 🎯 Быстрый старт
 
 ```tsx
-import { Button, Input, Card, ThemeProvider } from 'keypix-ui'
+import { Button, Input, Card, CardContent, CardHeader, CardTitle } from '@keypix/ui'
 
 function App() {
   return (
-    <ThemeProvider>
-      <div className="keypix-p-8">
-        <Card>
-          <CardHeader>
-            <CardTitle>Welcome to Keypix UI</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Input placeholder="Enter your name" />
-            <Button>Get Started</Button>
-          </CardContent>
-        </Card>
-      </div>
-    </ThemeProvider>
-  )
-}
-```
-
-**That's it!** 🎉 No configuration needed. Styles are automatically injected.
-
-## 🎯 Auto-Styling
-
-Keypix UI automatically applies global styles when imported, including:
-
-```css
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  -webkit-tap-highlight-color: transparent;
-  font-family: 'Inter', sans-serif;
-}
-
-*:focus,
-*:active {
-  outline: none;
-}
-
-html,
-body {
-  height: 100%;
-}
-```
-
-These styles provide a clean foundation for your application. The Inter font is automatically loaded from Google Fonts.
-
-## 🎨 Live Demo
-
-See all components in action with our interactive demo:
-
-```bash
-# Clone the repository
-git clone https://github.com/keypix-tech/ui.git
-cd keypix-ui
-
-# Install dependencies
-npm install
-
-# Start the demo
-npm run dev
-```
-
-Then open [http://localhost:5173](http://localhost:5173) in your browser to see the complete component showcase with:
-- All button variants and states
-- Form inputs with validation
-- Badges and avatars
-- Loading spinners
-- Search bars and modals
-- Data tables
-- Theme switching (Light/Dark/System)
-- Responsive design examples
-
-## 🎨 Components
-
-### Atoms
-- [Button](./docs/components/button.md) - Versatile button with multiple variants
-- [Input](./docs/components/input.md) - Form input with validation states
-- [Badge](./docs/components/badge.md) - Status indicators and labels
-- [Avatar](./docs/components/avatar.md) - User profile images
-- [Spinner](./docs/components/spinner.md) - Loading indicators
-
-### Molecules
-- [SearchBar](./docs/components/search-bar.md) - Search input with actions
-- [Alert](./docs/components/alert.md) - Notification messages
-- [Modal](./docs/components/modal.md) - Overlay dialogs
-
-### Organisms
-- [Header](./docs/components/header.md) - Page navigation
-- [DataTable](./docs/components/data-table.md) - Tabular data display
-
-### Providers
-- [ThemeProvider](./docs/components/theme-provider.md) - Theme management
-
-## 💡 Examples
-
-### Basic Button Usage
-
-```tsx
-import { Button } from 'keypix-ui'
-
-// Different variants
-<Button variant="default">Default</Button>
-<Button variant="secondary">Secondary</Button>
-<Button variant="destructive">Delete</Button>
-<Button variant="outline">Outline</Button>
-<Button variant="ghost">Ghost</Button>
-<Button variant="link">Link</Button>
-
-// Different sizes
-<Button size="sm">Small</Button>
-<Button size="md">Medium</Button>
-<Button size="lg">Large</Button>
-
-// With loading state
-<Button loading>Processing...</Button>
-
-// With icons
-<Button leftIcon={<DownloadIcon />}>Download</Button>
-```
-
-### Form with Validation
-
-```tsx
-import { Input, Button, Card } from 'keypix-ui'
-
-function ContactForm() {
-  const [email, setEmail] = useState('')
-  const [error, setError] = useState('')
-
-  return (
     <Card>
       <CardHeader>
-        <CardTitle>Contact Us</CardTitle>
+        <CardTitle>Welcome to Keypix UI</CardTitle>
       </CardHeader>
       <CardContent>
-        <Input
-          type="email"
+        <Input 
+          label="Email" 
           placeholder="Enter your email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          error={!!error}
-          helperText={error}
+          leftIcon="📧"
         />
-        <Button 
-          onClick={handleSubmit}
-          loading={isSubmitting}
-          disabled={!email}
-        >
-          Send Message
+        <Button variant="primary" leftIcon="🚀">
+          Get Started
         </Button>
       </CardContent>
     </Card>
@@ -210,308 +45,409 @@ function ContactForm() {
 }
 ```
 
-### Theme Switching
+## 🏗️ Унифицированный API
+
+Keypix UI использует унифицированную систему API, обеспечивающую консистентность во всех компонентах:
+
+### Базовые принципы
 
 ```tsx
-import { ThemeProvider, useTheme, Button } from 'keypix-ui'
+// Все компоненты следуют единым соглашениям
+<Button size="md" variant="primary" color="success" />
+<Input size="md" variant="outline" color="primary" />
+<Badge size="md" variant="success" color="warning" />
+```
 
-function ThemeToggle() {
-  const { theme, setTheme } = useTheme()
+### Унифицированные размеры
 
-  return (
-    <div className="keypix-flex keypix-gap-2">
-      <Button 
-        variant={theme === 'light' ? 'default' : 'outline'}
-        onClick={() => setTheme('light')}
-      >
-        Light
-      </Button>
-      <Button 
-        variant={theme === 'dark' ? 'default' : 'outline'}
-        onClick={() => setTheme('dark')}
-      >
-        Dark
-      </Button>
-      <Button 
-        variant={theme === 'system' ? 'default' : 'outline'}
-        onClick={() => setTheme('system')}
-      >
-        System
-      </Button>
-    </div>
-  )
+```tsx
+type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
+```
+
+### Унифицированные варианты
+
+```tsx
+type Variant = 'default' | 'primary' | 'secondary' | 'success' | 'warning' | 'error' | 'outline' | 'ghost'
+```
+
+### Унифицированные цвета
+
+```tsx
+type Color = 'primary' | 'secondary' | 'success' | 'warning' | 'error' | 'info' | 'muted'
+```
+
+## 🧩 Компоненты
+
+### Atoms (Атомы)
+
+Базовые строительные блоки интерфейса:
+
+- **Button** - кнопки с различными вариантами и состояниями
+- **Input** - поля ввода с валидацией и иконками
+- **Badge** - бейджи для статусов и меток
+- **Avatar** - аватары пользователей с статусами
+- **Spinner** - индикаторы загрузки
+- **Card** - карточки для группировки контента
+
+### Molecules (Молекулы)
+
+Составные компоненты:
+
+- **SearchBar** - поисковая строка с кнопкой
+- **Alert** - уведомления и предупреждения
+- **Modal** - модальные окна и диалоги
+
+### Organisms (Организмы)
+
+Сложные компоненты:
+
+- **Header** - заголовок приложения с навигацией
+- **DataTable** - таблицы данных с сортировкой и пагинацией
+- **TimeChart** - временные диаграммы для планирования
+
+## 🎣 Унифицированные хуки
+
+### useFormState
+
+Управление состоянием формы с валидацией:
+
+```tsx
+import { useFormState, validationRules } from '@keypix/ui'
+
+const form = useFormState(
+  { email: '', password: '' },
+  {
+    email: validationRules.email,
+    password: validationRules.minLength(6)
+  }
+)
+
+// Использование
+<Input
+  value={form.values.email}
+  onChange={(e) => form.setFieldValue('email', e.target.value)}
+  error={form.errors.email}
+/>
+```
+
+### useLoadingState
+
+Управление состоянием загрузки:
+
+```tsx
+import { useLoadingState } from '@keypix/ui'
+
+const { loading, withLoading } = useLoadingState()
+
+const handleSubmit = async () => {
+  await withLoading(async () => {
+    // async operation
+  })
 }
+```
+
+### useVisibilityState
+
+Управление видимостью компонентов:
+
+```tsx
+import { useVisibilityState } from '@keypix/ui'
+
+const { visible, show, hide, toggle } = useVisibilityState()
+
+// Использование
+<Modal isOpen={visible} onClose={hide} />
+```
+
+### useSelectionState
+
+Управление выбором элементов:
+
+```tsx
+import { useSelectionState } from '@keypix/ui'
+
+const { selection, select, deselect, isSelected } = useSelectionState()
+
+// Использование
+<DataTable onRowClick={(row) => select(row.id)} />
+```
+
+## 🛠️ Унифицированные утилиты
+
+### createComponentClasses
+
+Генерация CSS классов для компонентов:
+
+```tsx
+import { createComponentClasses } from '@keypix/ui'
+
+const classes = createComponentClasses('button', {
+  size: 'md',
+  variant: 'primary',
+  rounded: true,
+  elevated: true
+})
+```
+
+### createAccessibilityProps
+
+Генерация accessibility атрибутов:
+
+```tsx
+import { createAccessibilityProps } from '@keypix/ui'
+
+const ariaProps = createAccessibilityProps({
+  'aria-label': 'Submit form',
+  'aria-describedby': 'form-description',
+  role: 'button'
+})
+```
+
+### createEventHandlers
+
+Создание обработчиков событий:
+
+```tsx
+import { createEventHandlers } from '@keypix/ui'
+
+const handlers = createEventHandlers({
+  onClick: handleClick,
+  onFocus: handleFocus,
+  disabled: false,
+  loading: false
+})
+```
+
+## 🎨 Темизация
+
+### ThemeProvider
+
+```tsx
+import { ThemeProvider } from '@keypix/ui'
 
 function App() {
   return (
-    <ThemeProvider defaultTheme="system">
-      <ThemeToggle />
-      {/* Your app content */}
+    <ThemeProvider theme="dark">
+      <YourApp />
     </ThemeProvider>
   )
 }
 ```
 
-## 🎨 Customization
-
-### CSS Variables
-
-Keypix UI uses CSS variables for easy customization:
-
-```css
-:root {
-  --primary: 221.2 83.2% 53.3%;
-  --primary-foreground: 210 40% 98%;
-  --secondary: 210 40% 96%;
-  --secondary-foreground: 222.2 84% 4.9%;
-  --background: 0 0% 100%;
-  --foreground: 222.2 84% 4.9%;
-  --border: 214.3 31.8% 91.4%;
-  --radius: 0.5rem;
-}
-
-.dark {
-  --background: 222.2 84% 4.9%;
-  --foreground: 210 40% 98%;
-  /* ... other dark theme variables */
-}
-```
-
-### Custom Theme
+### Кастомные темы
 
 ```tsx
-import { ThemeProvider } from 'keypix-ui'
+import { createTheme } from '@keypix/ui'
 
-function App() {
+const customTheme = createTheme({
+  colors: {
+    primary: '#007bff',
+    secondary: '#6c757d',
+    success: '#28a745',
+    warning: '#ffc107',
+    error: '#dc3545'
+  },
+  spacing: {
+    xs: '0.25rem',
+    sm: '0.5rem',
+    md: '1rem',
+    lg: '1.5rem',
+    xl: '3rem'
+  }
+})
+```
+
+## 📚 Примеры
+
+### Простая форма
+
+```tsx
+import { 
+  Button, 
+  Input, 
+  Card, 
+  CardContent, 
+  CardHeader, 
+  CardTitle,
+  useFormState,
+  validationRules 
+} from '@keypix/ui'
+
+function LoginForm() {
+  const form = useFormState(
+    { email: '', password: '' },
+    {
+      email: validationRules.email,
+      password: validationRules.minLength(6)
+    }
+  )
+
   return (
-    <ThemeProvider 
-      defaultTheme="dark"
-      storageKey="my-app-theme"
-    >
-      {/* Your app */}
-    </ThemeProvider>
+    <Card>
+      <CardHeader>
+        <CardTitle>Login</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <Input
+          label="Email"
+          value={form.values.email}
+          onChange={(e) => form.setFieldValue('email', e.target.value)}
+          error={form.errors.email}
+          leftIcon="📧"
+        />
+        <Input
+          label="Password"
+          type="password"
+          value={form.values.password}
+          onChange={(e) => form.setFieldValue('password', e.target.value)}
+          error={form.errors.password}
+          leftIcon="🔒"
+        />
+        <Button 
+          variant="primary" 
+          fullWidth
+          disabled={!form.isValid}
+        >
+          Login
+        </Button>
+      </CardContent>
+    </Card>
   )
 }
 ```
 
-### Component Styling
+### Таблица данных
 
 ```tsx
-// Using className prop
-<Button className="keypix-bg-red-500 hover:keypix-bg-red-600">
-  Custom Button
-</Button>
+import { DataTable, Badge } from '@keypix/ui'
 
-// Using CSS variables
-<Button style={{ '--primary': '220 13% 91%' }}>
-  Custom Primary
-</Button>
-```
+const data = [
+  { id: 1, name: 'John Doe', email: 'john@example.com', status: 'active' },
+  { id: 2, name: 'Jane Smith', email: 'jane@example.com', status: 'inactive' }
+]
 
-## 📱 Responsive Design
+const columns = [
+  { key: 'id', title: 'ID', sortable: true },
+  { key: 'name', title: 'Name', sortable: true },
+  { key: 'email', title: 'Email', sortable: true },
+  { 
+    key: 'status', 
+    title: 'Status', 
+    sortable: true,
+    render: (value) => (
+      <Badge variant={value === 'active' ? 'success' : 'secondary'}>
+        {value}
+      </Badge>
+    )
+  }
+]
 
-All components are mobile-first and responsive:
-
-```tsx
-// Responsive grid
-<div className="keypix-grid keypix-grid-cols-1 md:keypix-grid-cols-2 lg:keypix-grid-cols-3 keypix-gap-4">
-  <Card>Card 1</Card>
-  <Card>Card 2</Card>
-  <Card>Card 3</Card>
-</div>
-
-// Responsive spacing
-<div className="keypix-p-4 md:keypix-p-6 lg:keypix-p-8">
-  Content with responsive padding
-</div>
-```
-
-## ♿ Accessibility
-
-Keypix UI is built with accessibility in mind:
-
-- **WCAG 2.1 AA compliant**
-- **Keyboard navigation** support
-- **Screen reader** friendly
-- **High contrast** mode support
-- **Reduced motion** preferences
-- **ARIA attributes** on all components
-
-```tsx
-// Accessible button with proper labels
-<Button 
-  aria-label="Download file"
-  aria-describedby="download-description"
->
-  Download
-</Button>
-<div id="download-description" className="keypix-sr-only">
-  Downloads the current file in PDF format
-</div>
-```
-
-## 🔧 API Reference
-
-### Button
-
-```tsx
-interface ButtonProps {
-  variant?: 'default' | 'secondary' | 'destructive' | 'outline' | 'ghost' | 'link' | 'success' | 'warning' | 'info'
-  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'icon'
-  loading?: boolean
-  loadingText?: string
-  leftIcon?: React.ReactNode
-  rightIcon?: React.ReactNode
-  fullWidth?: boolean
-  disabled?: boolean
-  ariaLabel?: string
-  ariaDescription?: string
-  ariaLive?: 'off' | 'polite' | 'assertive'
+function UsersTable() {
+  return (
+    <DataTable
+      data={data}
+      columns={columns}
+      searchable
+      sortable
+      pagination
+      pageSize={10}
+    />
+  )
 }
 ```
 
-### Input
+### Временная диаграмма
 
 ```tsx
-interface InputProps {
-  label?: string
-  helperText?: string
-  error?: boolean
-  required?: boolean
-  leftIcon?: React.ReactNode
-  rightIcon?: React.ReactNode
-  // ... all standard input props
+import { TimeChart } from '@keypix/ui'
+
+const data = [
+  {
+    id: 'task-1',
+    label: 'Development',
+    color: '#3b82f6',
+    startTime: new Date('2024-01-15T09:00:00'),
+    endTime: new Date('2024-01-15T12:00:00'),
+    value: 3.0
+  }
+]
+
+const events = [
+  {
+    id: 'event-1',
+    time: new Date('2024-01-15T10:30:00'),
+    type: 'info',
+    icon: 'ℹ️',
+    label: 'Code Review',
+    description: 'Code review scheduled'
+  }
+]
+
+function ProjectTimeline() {
+  return (
+    <TimeChart
+      title="Project Timeline"
+      startDate={new Date('2024-01-15T08:00:00')}
+      endDate={new Date('2024-01-15T18:00:00')}
+      data={data}
+      events={events}
+      currentTime={new Date('2024-01-15T11:00:00')}
+      showSummary
+      showZoomControls
+    />
+  )
 }
 ```
 
-[📖 Full API Documentation](./docs/api.md)
+## 🔧 Разработка
 
-## 🧪 Testing
-
-```tsx
-import { render, screen } from '@testing-library/react'
-import { Button } from 'keypix-ui'
-
-test('renders button with text', () => {
-  render(<Button>Click me</Button>)
-  expect(screen.getByRole('button', { name: /click me/i })).toBeInTheDocument()
-})
-
-test('handles click events', () => {
-  const handleClick = jest.fn()
-  render(<Button onClick={handleClick}>Click me</Button>)
-  
-  fireEvent.click(screen.getByRole('button'))
-  expect(handleClick).toHaveBeenCalledTimes(1)
-})
-```
-
-## 📊 Performance
-
-- **Bundle Size**: 13.47 KB gzipped
-- **Loading Time**: 264ms on slow 3G
-- **Runtime**: 94ms on Snapdragon 410
-- **Tree Shaking**: Fully supported
-- **Code Splitting**: Automatic
-
-## 🛠️ Development
-
-### Prerequisites
-
-- Node.js 18+
-- npm/yarn/pnpm
-
-### Setup
+### Установка зависимостей
 
 ```bash
-git clone https://github.com/keypix-tech/ui.git
-cd keypix-ui
 npm install
 ```
 
-### Scripts
+### Запуск в режиме разработки
 
 ```bash
-# Development
-npm run dev          # Start development server with demo
-
-# Building
-npm run build        # Build library
-npm run build:clean  # Clean build
-
-# Testing
-npm run test         # Run tests
-npm run test:watch   # Watch mode
-npm run test:coverage # Coverage report
-
-# Quality
-npm run lint         # ESLint
-npm run type-check   # TypeScript check
-npm run size         # Bundle size analysis
+npm run dev
 ```
 
-### Contributing
+### Сборка
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests
-5. Submit a pull request
+```bash
+npm run build
+```
 
-[📋 Contributing Guidelines](./CONTRIBUTING.md)
+### Тестирование
 
-## 📈 Roadmap
+```bash
+npm test
+```
 
-- [ ] **More Components**
-  - [ ] DataGrid
-  - [ ] DatePicker
-  - [ ] MultiSelect
-  - [ ] FileUpload
-  - [ ] RichTextEditor
+## 📖 Документация
 
-- [ ] **Enhanced Features**
-  - [ ] Animation library
-  - [ ] Form validation
-  - [ ] Internationalization
-  - [ ] Server-side rendering
+- [Унифицированный API](./docs/unified-api.md) - подробное описание унифицированного API
+- [Компоненты](./docs/components/) - документация по компонентам
+- [Туториалы](./docs/tutorials/) - руководства по использованию
+- [Миграция](./docs/migration/) - руководства по миграции
 
-- [ ] **Developer Experience**
-  - [ ] CLI tool
-  - [ ] VS Code extension
-  - [ ] Figma plugin
-  - [ ] Design tokens
+## 🤝 Вклад в проект
 
-- [ ] **Documentation**
-  - [ ] Interactive playground
-  - [ ] Video tutorials
-  - [ ] Migration guides
-  - [ ] Best practices
+Мы приветствуем вклад в развитие библиотеки! Пожалуйста, ознакомьтесь с [руководством по вкладу](./CONTRIBUTING.md).
 
-## 🤝 Community
+## 📄 Лицензия
 
-- [📖 Documentation](https://ui.keypix.uz/docs)
-- [🎨 Live Demo](#live-demo)
-- [🐛 Issues](https://github.com/keypix-tech/ui/issues)
-- [💬 Discussions](https://github.com/keypix-tech/ui/discussions)
-- [📧 Email](mailto:keypixteam@gmail.com)
+MIT License - см. файл [LICENSE](./LICENSE) для подробностей.
 
-## 📄 License
+## 🆘 Поддержка
 
-MIT License - see the [LICENSE](LICENSE) file for details.
+Если у вас есть вопросы или проблемы:
 
-## 🙏 Acknowledgments
-
-- [Tailwind CSS](https://tailwindcss.com/) for the utility-first approach
-- [shadcn/ui](https://ui.shadcn.com/) for inspiration
-- [Radix UI](https://www.radix-ui.com/) for accessibility patterns
-- [React](https://reactjs.org/) for the amazing framework
+- Создайте [issue](https://github.com/keypix/ui/issues)
+- Обратитесь к [документации](./docs/)
+- Присоединитесь к нашему [Discord](https://discord.gg/keypix)
 
 ---
 
-<div align="center">
-
-**Made with ❤️ by [Keypix Team](https://keypix.uz)**
-
-[Website](https://ui.keypix.uz) • [GitHub](https://github.com/keypix-tech/ui) • [Twitter](https://twitter.com/keypixtech)
-
-</div>
+**Keypix UI** - создано с ❤️ для сообщества React разработчиков.

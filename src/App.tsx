@@ -11,6 +11,7 @@ import { Alert, AlertDescription, AlertTitle } from "./components/molecules/Aler
 import { Modal } from "./components/molecules/Modal"
 import { DataTable } from "./components/organisms/DataTable"
 import type { Column } from "./components/organisms/DataTable"
+import { TimeChart } from "./components/organisms/TimeChart"
 import { ThemeProvider } from "./components/providers/ThemeProvider"
 import { useTheme } from "./components/providers"
 
@@ -27,6 +28,8 @@ function AppContent() {
     { id: 2, name: 'Jane Smith', email: 'jane@example.com', status: 'inactive', role: 'User' },
     { id: 3, name: 'Bob Johnson', email: 'bob@example.com', status: 'active', role: 'Editor' },
   ]
+
+
 
   const columns: Column<typeof sampleData[0]>[] = [
     { key: 'id', title: 'ID', sortable: true },
@@ -55,7 +58,9 @@ function AppContent() {
   }
 
   return (
-    <div className="min-h-screen bg-background p-6">
+    <div className="min-h-screen bg-background p-6"
+        style={{ padding: "50px" }}
+      >
       {/* Organism Example */}
       <Header 
         title="Keypix UI - Premium Design System"
@@ -80,6 +85,161 @@ function AppContent() {
               <option value="system">System</option>
             </select>
           </div>
+        </div>
+        <div style={{ padding: "50px 0px 50px 0" }}>
+          {/* TimeChart */}
+          <Card>
+            <CardHeader>
+              <CardTitle>Time Chart</CardTitle>
+              <CardDescription>Advanced timeline visualization for logistics and scheduling</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <TimeChart
+                title="Driver Activity Log"
+                startDate={new Date('2024-07-18T08:00:00')}
+                endDate={new Date('2024-07-19T09:00:00')}
+                data={[
+                  {
+                    id: 'off-duty-1',
+                    label: 'OFF',
+                    color: '#dc2626',
+                    startTime: new Date('2024-07-18T08:00:00'),
+                    endTime: new Date('2024-07-18T10:00:00'),
+                    value: 2.0
+                  },
+                  {
+                    id: 'on-duty-1',
+                    label: 'ON',
+                    color: '#7c3aed',
+                    startTime: new Date('2024-07-18T10:00:00'),
+                    endTime: new Date('2024-07-18T22:00:00'),
+                    value: 12.0
+                  },
+                  {
+                    id: 'driving-1',
+                    label: 'D',
+                    color: '#059669',
+                    startTime: new Date('2024-07-18T08:00:00'),
+                    endTime: new Date('2024-07-18T09:00:00'),
+                    value: 1.0
+                  },
+                  {
+                    id: 'driving-2',
+                    label: 'D',
+                    color: '#059669',
+                    startTime: new Date('2024-07-18T16:00:00'),
+                    endTime: new Date('2024-07-18T20:00:00'),
+                    value: 4.0
+                  },
+                  {
+                    id: 'sleeper-1',
+                    label: 'SB',
+                    color: '#16a34a',
+                    startTime: new Date('2024-07-18T21:00:00'),
+                    endTime: new Date('2024-07-19T01:00:00'),
+                    value: 4.0
+                  },
+                  {
+                    id: 'on-duty-2',
+                    label: 'ON',
+                    color: '#7c3aed',
+                    startTime: new Date('2024-07-18T21:00:00'),
+                    endTime: new Date('2024-07-19T01:00:00'),
+                    value: 4.0
+                  },
+                  {
+                    id: 'driving-3',
+                    label: 'D',
+                    color: '#059669',
+                    startTime: new Date('2024-07-19T01:00:00'),
+                    endTime: new Date('2024-07-19T05:00:00'),
+                    value: 4.0
+                  },
+                  {
+                    id: 'sleeper-2',
+                    label: 'SB',
+                    color: '#16a34a',
+                    startTime: new Date('2024-07-19T05:00:00'),
+                    endTime: new Date('2024-07-19T09:00:00'),
+                    value: 4.0
+                  }
+                ]}
+                events={[
+                  {
+                    id: 'event-1',
+                    time: new Date('2024-07-18T09:30:00'),
+                    type: 'warning' as const,
+                    icon: '⚠️',
+                    label: 'Break Required',
+                    description: 'Driver needs to take a break'
+                  },
+                  {
+                    id: 'event-2',
+                    time: new Date('2024-07-18T12:15:00'),
+                    type: 'error' as const,
+                    icon: '🚨',
+                    label: 'HOS Violation',
+                    description: 'Hours of service violation detected'
+                  },
+                  {
+                    id: 'event-3',
+                    time: new Date('2024-07-18T15:45:00'),
+                    type: 'info' as const,
+                    icon: 'ℹ️',
+                    label: 'Fuel Stop',
+                    description: 'Vehicle refueling required'
+                  },
+                  {
+                    id: 'event-4',
+                    time: new Date('2024-07-18T18:20:00'),
+                    type: 'success' as const,
+                    icon: '✅',
+                    label: 'Delivery Complete',
+                    description: 'Cargo delivered successfully'
+                  },
+                  {
+                    id: 'event-5',
+                    time: new Date('2024-07-18T22:30:00'),
+                    type: 'warning' as const,
+                    icon: '⚠️',
+                    label: 'Weather Alert',
+                    description: 'Severe weather conditions ahead'
+                  },
+                  {
+                    id: 'event-6',
+                    time: new Date('2024-07-19T02:15:00'),
+                    type: 'error' as const,
+                    icon: '🚨',
+                    label: 'Engine Warning',
+                    description: 'Engine temperature high'
+                  },
+                  {
+                    id: 'event-7',
+                    time: new Date('2024-07-19T04:45:00'),
+                    type: 'info' as const,
+                    icon: 'ℹ️',
+                    label: 'Route Change',
+                    description: 'Route updated due to traffic'
+                  },
+                  {
+                    id: 'event-8',
+                    time: new Date('2024-07-19T07:30:00'),
+                    type: 'success' as const,
+                    icon: '✅',
+                    label: 'Maintenance Complete',
+                    description: 'Scheduled maintenance finished'
+                  }
+                ]}
+                currentTime={new Date('2024-07-18T15:30:00')}
+                zoom={1}
+                showZoomControls={true}
+                showFilterControls={true}
+                onDataPointClick={(data) => console.log('Data clicked:', data)}
+                onEventClick={(event) => console.log('Event clicked:', event)}
+                onZoomChange={(zoom) => console.log('Zoom changed:', zoom)}
+              />
+            </CardContent>
+          </Card>
         </div>
 
         {/* Atoms Examples */}
